@@ -28,11 +28,33 @@ def merge_mts_groups(groups):
         cmd = "ffmpeg -i \"concat:"
         for path in files:
             cmd += "|" + path
-        cmd += "\" -c copy " + group + ".mts"
+        output_file = group + "-merged.mts"
+        if os.path.exists(output_file):
+            print("Skipping existing %s" % (output_file))
+            continue
+        cmd += "\" -c copy " + output_file
+        print("Executing: %s" % (cmd))
+        os.system(cmd)
 
-        print(cmd)
+        break
+
+def transcode_mts_groups(groups):
+    for group, files in groups.items():
+        input_file = group + "-merged.mts"
+        output_file = group + "-merged.mp4"
+
+        if os.path.exists(output_file):
+            print("Skipping existing %s" % (output_file))
+            continue
+
+        cmd = "ffmpeg -i %s %s" % (input_file, output_file)
+        print("Executing: %s" % (cmd))
+        os.system(cmd)
+
+        break
 
 
 groups = fetch_mts_groups(".")
 merge_mts_groups(groups)
+transcode_mts_groups(groups)
 
