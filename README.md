@@ -2,7 +2,7 @@
 
 mtsmerge.py utility script
 
-This script is used to convert Mediasonic HW130STB mts files to mp4. mts stands for MPEG Transport Stream. An MTS file is a video saved in the Advanced Video Coding High Definition (AVCHD) format.
+This script is used to convert MTS files that are outputted from my pvr to mp4. mts stands for MPEG Transport Stream. An MTS file is a video saved in the Advanced Video Coding High Definition (AVCHD) format.
 
 The script simply merge file sequences (mts, mts1, mts2, mts3) of files having the same file name. Then, it convert it to mp4. It does it all using [ffmpeg](https://ffmpeg.org/) 
 
