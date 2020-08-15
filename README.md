@@ -30,5 +30,8 @@ python3 mtsmerge.py --sourcedir <media folder>
 * [python3](https://www.python.org/) (tested with python 3.6.9)
 * [ffmpeg](https://ffmpeg.org/) in your path
 
+**Tested**
+* Tested with [Mediasonic HW130STB](https://www.amazon.ca/-/fr/gp/product/B01EW098XS/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1)
+
 
 
