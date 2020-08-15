@@ -1,10 +1,19 @@
 #!/usr/bin/python3
 
+import argparse
 import os
 import sys
 
 if sys.version_info[0] < 3:
     raise Exception("Must be using Python 3")
+
+merge_suffix = "-merged"
+
+def run_command(cmd):
+    status = os.system(cmd)
+    if(status != 0):
+        print("Command %s return status %d" % (cmd, status))
+        sys.exit(1)
 
 def fetch_mts_groups(path):
     groups = {}
@@ -14,9 +23,12 @@ def fetch_mts_groups(path):
             filename, ext = os.path.splitext(fullpath)
             if not "mts" in ext.lower():
                 continue
+            if merge_suffix in filename:
+                continue
 
             if not filename in groups:
                 groups[filename] = []
+            # remove ./ from path since ffmpeg does not like them
             groups[filename] += [fullpath.replace("./","")]
 
     sortedgroups = {}
@@ -35,18 +47,18 @@ def merge_mts_groups(groups):
                 is_first = False
             else:
                 cmd += "|" + path
-        output_file = group + "-merged.mts"
+        output_file = group + merge_suffix + ".mts"
         if os.path.exists(output_file):
             print("Skipping existing %s" % (output_file))
             continue
         cmd += "\" -c copy " + output_file
         print("Executing: %s" % (cmd))
-        os.system(cmd)
+        run_command(cmd)
 
 def transcode_mts_groups(groups):
     for group, files in groups.items():
-        input_file = group + "-merged.mts"
-        output_file = group + "-merged.mp4"
+        input_file = group + merge_suffix + ".mts"
+        output_file = group + merge_suffix + ".mp4"
 
         if os.path.exists(output_file):
             print("Skipping existing %s" % (output_file))
@@ -54,9 +66,12 @@ def transcode_mts_groups(groups):
 
         cmd = "ffmpeg -i %s %s" % (input_file, output_file)
         print("Executing: %s" % (cmd))
-        os.system(cmd)
+        run_command(cmd)
 
-groups = fetch_mts_groups(".")
+parser = argparse.ArgumentParser(description="mtsmerge merge & transcode .mts, .mts1, .mts2, .mts3 file sequence into an mp4")
+parser.add_argument("--sourcedir", type=str, default=".", help="directory where your media files are found")
+args = parser.parse_args()
+
+groups = fetch_mts_groups(args.sourcedir)
 merge_mts_groups(groups)
 transcode_mts_groups(groups)
-
