@@ -4,7 +4,7 @@ mtsmerge.py utility script
 
 This script is used to convert MTS files that are outputted from my pvr to mp4. mts stands for MPEG Transport Stream. An MTS file is a video saved in the Advanced Video Coding High Definition (AVCHD) format.
 
-The script simply merge file sequences (mts, mts1, mts2, mts3) of files having the same file name. Then, it convert it to mp4. It does it all using [ffmpeg](https://ffmpeg.org/) 
+The script simply merge file sequences (mts, mts1, mts2, mts3) of files having the same file name. Then, it convert it to mp4. It does it all using [ffmpeg](https://ffmpeg.org/). 
 
 For example, if you have a folder with:
 
@@ -33,5 +33,8 @@ python3 mtsmerge.py --sourcedir <media folder>
 **Tested**
 * Tested with [Mediasonic ATSC Digital Converter Box with Recording/Media Player/TV Tuner Function (HW130STB)](https://www.amazon.ca/-/fr/gp/product/B01EW098XS/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1) MTS output.
 
+**Bugs & Notes**
+
+The current implementation transcode the AVCHD to h264 and does an audio passthrough. It merge the files to a single mts file before transcoding. This should not be necessary. It is also fairly simple to modify it and add parameters to use other codecs like HEVC, opus, etc. I welcome any contribution. 
 
 
