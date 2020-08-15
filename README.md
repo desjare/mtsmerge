@@ -26,7 +26,7 @@ or
 
 python3 mtsmerge.py --sourcedir <media folder> 
 
-** Requirements **
+**Requirements**
 * [python3](https://www.python.org/) (tested with python 3.6.9)
 * [ffmpeg](https://ffmpeg.org/) in your path
 
