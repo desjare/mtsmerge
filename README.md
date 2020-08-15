@@ -31,7 +31,7 @@ python3 mtsmerge.py --sourcedir <media folder>
 * [ffmpeg](https://ffmpeg.org/) in your path
 
 **Tested**
-* Tested with [Mediasonic HW130STB](https://www.amazon.ca/-/fr/gp/product/B01EW098XS/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1)
+* Tested with [Mediasonic ATSC Digital Converter Box with Recording/Media Player/TV Tuner Function (HW130STB)](https://www.amazon.ca/-/fr/gp/product/B01EW098XS/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1) MTS output.
 
 
 
