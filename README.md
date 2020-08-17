@@ -1,14 +1,14 @@
-# mtsmerge
+# mtsmerge.py: PVR output MTS merge and transcode utility script
 
-mtsmerge.py: PVR output MTS merge and transcode utility script
+## Intended audience 
+This script is meant to be used by people with little prior knowledge of media files, transcoding, etc. It is meant to be simple to use but requires the use of the command line.
 
-This script is meant to be use by people with little prior knowledge of media files, transcoding, etc. It is meant to be simple to use but requires use of command line.
-
+## Description
 This script is used to convert MTS files that are outputted from my PVR to mp4. MTS stands for MPEG Transport Stream. An MTS file is a video saved in the Advanced Video Coding High Definition [AVCHD](https://en.wikipedia.org/wiki/AVCHD) format. 
 
-PVR sometimes uses older filesystem that supports only 4GB files and can split you media into several files. This is not very practical to watch a movie so I wrote this script. Storing media in [AVCHD](https://en.wikipedia.org/wiki/AVCHD) is also taking a lot of disk space. Converting them to another format for storage is useful.
+PVR sometimes uses an older filesystem that supports only 4GB files and can split your media into several files. This is not very practical to watch a movie so I wrote this script. Storing media in [AVCHD](https://en.wikipedia.org/wiki/AVCHD) is also taking a lot of disk space. Converting them to another format for storage is useful.
 
-The script simply merge file sequences (.mts, .mts1, .mts2, .mts3) of files having the same file name. Then, it convert it to mp4. It does it all using [ffmpeg](https://ffmpeg.org/). 
+The script simply merge file sequences (.mts, .mts1, .mts2, .mts3) of files having the same file name. Then, it converts it to mp4. It does it all using [ffmpeg](https://ffmpeg.org/). 
 
 For example, if you have a folder with:
 
@@ -20,9 +20,9 @@ For example, if you have a folder with:
 it will convert it to:
 * CIVM-HD-08122020-0900PM-merged.mp4
 
-The script won't delete or cleanup your files.
+The script won't delete or clean up your files.
 
-**Usage:**
+## Usage
 
 For help:
 python3 mtsmerge.py -h
@@ -43,15 +43,15 @@ Exxamples:
 | [h265](https://en.wikipedia.org/wiki/High_Efficiency_Video_Coding)  | 1.4GB | --x265 | Slow |
 
 
-**Requirements**
+## Requirements
 * [python3](https://www.python.org/) (tested with python 3.6.9)
 * [ffmpeg](https://ffmpeg.org/) in your path
 
-**Tested**
+## Tested
 * Tested with [Mediasonic ATSC Digital Converter Box with Recording/Media Player/TV Tuner Function (HW130STB)](https://www.amazon.ca/-/fr/gp/product/B01EW098XS/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1) MTS output.
 
-**Bugs & Notes**
+## Bugs & Notes
 
-The current implementation transcodes the AVCHD to h264 and does an audio passthrough. You can use h225 using --x265. The script merges the files to a single mts file before transcoding. This should not be necessary. It is also fairly simple to modify it and add parameters to use other codecs like HEVC, opus, etc. I welcome any contribution. 
+The current implementation transcodes the AVCHD to h264 and does an audio passthrough. You can use h225 using --x265. The script merges the files to a single MTS file before transcoding. This should not be necessary. It is also fairly simple to modify it and add parameters to use other codecs like HEVC, opus, etc. I welcome any contribution. 
 
 
