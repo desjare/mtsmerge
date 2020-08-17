@@ -4,9 +4,9 @@ mtsmerge.py utility script
 
 This script is meant to be use by people with little prior knowledge of media files, transcoding, etc. It is meant to be simple to use but requires use of command line.
 
-This script is used to convert MTS files that are outputted from my PVR to mp4. mts stands for MPEG Transport Stream. An MTS file is a video saved in the Advanced Video Coding High Definition ([AVCHD](https://en.wikipedia.org/wiki/AVCHD)) format. 
+This script is used to convert MTS files that are outputted from my PVR to mp4. mts stands for MPEG Transport Stream. An MTS file is a video saved in the Advanced Video Coding High Definition [AVCHD](https://en.wikipedia.org/wiki/AVCHD) format. 
 
-PVR sometimes uses older filesystem that supports only 4GB files and can split you media into several files. This is not very practical to watch a movie so I wrote this script. Storing media in ([AVCHD](https://en.wikipedia.org/wiki/AVCHD)) is also taking a lot of disk space. Converting them to another format for storage is useful.
+PVR sometimes uses older filesystem that supports only 4GB files and can split you media into several files. This is not very practical to watch a movie so I wrote this script. Storing media in [AVCHD](https://en.wikipedia.org/wiki/AVCHD) is also taking a lot of disk space. Converting them to another format for storage is useful.
 
 The script simply merge file sequences (.mts, .mts1, .mts2, .mts3) of files having the same file name. Then, it convert it to mp4. It does it all using [ffmpeg](https://ffmpeg.org/). 
 
@@ -34,7 +34,7 @@ Exxamples:
 
 **Encoding examples**
 
-1h57:00 movie MTS from my PVR with 5.1 ac3 384 kb/s audio
+1h57:00 1920x1080 HD movie MTS from my PVR with 5.1 ac3 384 kb/s audio
 
 | Codec | File Size | mtsmerge.py Options | Encoding Speed |
 --- | --- | --- | --- |
