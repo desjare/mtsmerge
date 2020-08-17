@@ -71,16 +71,12 @@ def transcode_mts_groups(groups, encoder_args):
 parser = argparse.ArgumentParser(description="mtsmerge merge & transcode .mts, .mts1, .mts2, .mts3 file sequence into an mp4")
 parser.add_argument("--sourcedir", type=str, default=".", help="directory where your media files are found")
 parser.add_argument("--x265", default=False, action="store_true", help="transcode video in x265")
-parser.add_argument("--opus", default=False, action="store_true", help="transcode audio in opus")
 args = parser.parse_args()
 
 encoder_args = ""
 
 if args.x265 is True:
     encoder_args += " -c:v libx265 -crf 28 "
-
-if args.opus is True:
-    encoder_args += " -c:a libopus -b:a 128K "
 
 groups = fetch_mts_groups(args.sourcedir)
 merge_mts_groups(groups)
