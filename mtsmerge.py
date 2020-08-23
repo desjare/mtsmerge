@@ -8,6 +8,7 @@ if sys.version_info[0] < 3:
     raise Exception("Must be using Python 3")
 
 merge_suffix = "-merged"
+output_ext = ".mp4"
 
 def run_command(cmd):
     status = os.system(cmd)
@@ -58,7 +59,7 @@ def merge_mts_groups(groups):
 def transcode_mts_groups(groups, encoder_args):
     for group, files in groups.items():
         input_file = group + merge_suffix + ".mts"
-        output_file = group + merge_suffix + ".mp4"
+        output_file = group + merge_suffix + output_ext
 
         if os.path.exists(output_file):
             print("Skipping existing %s" % (output_file))
@@ -68,15 +69,20 @@ def transcode_mts_groups(groups, encoder_args):
         print("Executing: %s" % (cmd))
         run_command(cmd)
 
-parser = argparse.ArgumentParser(description="mtsmerge merge & transcode .mts, .mts1, .mts2, .mts3 file sequence into an mp4")
+parser = argparse.ArgumentParser(description="mtsmerge merge & transcode .mts, .mts1, .mts2, .mts3 file sequence into an mp4 or mkv")
 parser.add_argument("--sourcedir", type=str, default=".", help="directory where your media files are found")
 parser.add_argument("--x265", default=False, action="store_true", help="transcode video in x265")
+parser.add_argument("--opus", default=False, action="store_true", help="transcode audio in opus")
 args = parser.parse_args()
 
 encoder_args = ""
 
 if args.x265 is True:
-    encoder_args += " -c:v libx265 -crf 28 "
+    encoder_args += ' -c:v libx265 -crf 28 ' 
+
+if args.opus is True:
+    encoder_args += ' -c:a libopus -b:a 256K -af "channelmap=channel_layout=5.1" '
+    output_ext = ".mkv"
 
 groups = fetch_mts_groups(args.sourcedir)
 merge_mts_groups(groups)

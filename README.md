@@ -24,9 +24,12 @@ The script won't delete or cleanup your files.
 
 python3 mtsmerge.py from your mts directory
 
-or
+* python3 mtsmerge.py --help for options
+* python3 mtsmerge.py --sourcedir <media folder> 
 
-python3 mtsmerge.py --sourcedir <media folder> 
+You can use --x265 for encoding video in HEVC/H.2265 but you will need a chromecast ultra is you plan to use a chromecast with your video.
+
+You can use --opus for encoding audio in opus. The file will be saved as an .mkv extension since .mp4 does not support opus. Opus is supported by chromecast 3rd generation.
 
 **Requirements**
 * [python3](https://www.python.org/) (tested with python 3.6.9)
@@ -37,6 +40,6 @@ python3 mtsmerge.py --sourcedir <media folder>
 
 **Bugs & Notes**
 
-The current implementation transcode the AVCHD to h264 and does an audio passthrough. It merge the files to a single mts file before transcoding. This should not be necessary. It is also fairly simple to modify it and add parameters to use other codecs like HEVC, opus, etc. I welcome any contribution. 
+The current implementation transcode the AVCHD to h264 and does an audio passthrough by default. It merge the files to a single mts file before transcoding. This should not be necessary. It is also fairly simple to modify it and add parameters to use other codec configurations like HEVC, opus, etc. I welcome any contribution. 
 
 
