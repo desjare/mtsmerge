@@ -46,7 +46,7 @@ You can use --opus for encoding audio in [opus](https://opus-codec.org/). The fi
 | [AVCHD](https://en.wikipedia.org/wiki/AVCHD) (original file) | 16.7GB | N/A | N/A
 | [h264](https://en.wikipedia.org/wiki/Advanced_Video_Coding) (default) | 4.26GB | default | Fast |
 | [h265](https://en.wikipedia.org/wiki/High_Efficiency_Video_Coding)  | 1.4GB | --x265 | Slow |
-| [h265](https://en.wikipedia.org/wiki/High_Efficiency_Video_Coding) & [opus](https://opus-codec.org/)  | xGB | --x265 --opus | Slower |
+| [h265](https://en.wikipedia.org/wiki/High_Efficiency_Video_Coding) & [opus](https://opus-codec.org/)  | 1.4GB | --x265 --opus | Slower |
 
 ## Requirements
 * [python3](https://www.python.org/) (tested with python 3.6.9)
