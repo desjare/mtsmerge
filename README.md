@@ -54,7 +54,7 @@ You can use --opus for encoding audio in [opus](https://opus-codec.org/). The fi
 
 I prepared a tutorial video to learn how to do that on windowws 10:
 
-https://youtu.be/G-Qb_BKxm0g
+https://youtu.be/JPX1237UqpY
 
 ## Tested
 * Tested with [Mediasonic ATSC Digital Converter Box with Recording/Media Player/TV Tuner Function (HW130STB)](https://www.amazon.ca/-/fr/gp/product/B01EW098XS/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1) MTS output.
