@@ -52,9 +52,9 @@ You can use --opus for encoding audio in [opus](https://opus-codec.org/). The fi
 * [python3](https://www.python.org/) (tested with python 3.6.9)
 * [ffmpeg](https://ffmpeg.org/) in your path
 
-I prepared a tutorial video to learn how to do that on windowws 10:
+I prepared a tutorial video to learn how to do that on Windows 10:
+https://gist.github.com/desjare/adc1514d46bcb38414a5e2a602f6d12d
 
-https://youtu.be/JPX1237UqpY
 
 ## Tested
 * Tested with [Mediasonic ATSC Digital Converter Box with Recording/Media Player/TV Tuner Function (HW130STB)](https://www.amazon.ca/-/fr/gp/product/B01EW098XS/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1) MTS output.
