@@ -63,6 +63,7 @@ def build_input_args(groups):
 def merge_mts_groups(groups, output_dir):
 
 	print("Merging mts")
+
 	groups_input_args = build_input_args(groups)
 	for group, files in groups.items():
 		if len(files) < 2:
@@ -77,10 +78,11 @@ def merge_mts_groups(groups, output_dir):
 
 		output_file = group_output + merge_suffix + ".mts"
 		if os.path.exists(output_file):
-			print("Skipping existing %s" % (output_file))
+			print("Warning: skipping existing %s" % (output_file))
 			continue
+
 		cmd += " -c copy \"%s\" " % (output_file)
-		print("Executing: %s" % (cmd))
+		print("Running: %s" % (cmd))
 		run_command(cmd)
 
 def transcode_mts_groups(groups, output_dir, use_intermediate, encoder_args):
@@ -98,8 +100,8 @@ def transcode_mts_groups(groups, output_dir, use_intermediate, encoder_args):
 			group_merge_suffix = ""
 
 		if use_intermediate is True:
-			group_input = os.path.join(output_dir, os.path.basename(group))
-			input_args = " -i " + group_input + group_merge_suffix + ".mts"
+			group_input = group
+			input_args = " -i \"%s\"" % (group_input + group_merge_suffix + ".mts")
 		else:
 			input_args = groups_input_args[group]
 
@@ -110,11 +112,11 @@ def transcode_mts_groups(groups, output_dir, use_intermediate, encoder_args):
 		output_file = group_output + group_merge_suffix + output_ext
 
 		if os.path.exists(output_file):
-			print("Skipping existing %s" % (output_file))
+			print("Warning: skipping existing %s" % (output_file))
 			continue
 
-		cmd = "ffmpeg %s %s %s" % (input_args, encoder_args, output_file)
-		print("Executing: %s" % (cmd))
+		cmd = "ffmpeg %s %s \"%s\"" % (input_args, encoder_args, output_file)
+		print("Running: %s" % (cmd))
 		run_command(cmd)
 
 parser = argparse.ArgumentParser(description="mtsmerge merge & transcode .mts, .mts1, .mts2, .mts3 file sequence into an mp4 or mkv")
