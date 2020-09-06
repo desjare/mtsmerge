@@ -29,7 +29,8 @@ python3 mtsmerge.py -h
 
 Exxamples:
 * python3 mtsmerge.py (from your current mts directory)
-* python3 mtsmerge.py --sourcedir <media folder> 
+* python3 mtsmerge.py --inputdir **media folder** 
+* python3 mtsmerge.py --inputdir **media folder** --outputdir **output folder** 
 * python3 mtsmerge.py --x265 (encoding with newer codec [HEVC/H.265](https://en.wikipedia.org/wiki/High_Efficiency_Video_Coding) video )
 * python3 mtsmerge.py --x265 --opus (encoding with newer codec [HEVC/H.265](https://en.wikipedia.org/wiki/High_Efficiency_Video_Coding) & [opus](https://opus-codec.org/) audio)
 
@@ -61,6 +62,6 @@ https://gist.github.com/desjare/adc1514d46bcb38414a5e2a602f6d12d
 
 ## Bugs & Notes
 
-The current implementation transcode the AVCHD to h264 and does an audio passthrough by default. It merge the files to a single mts file before transcoding. This should not be necessary. It is also fairly simple to modify it and add parameters to use other codec configurations like HEVC, opus, etc. I welcome any contribution. 
+The current implementation transcode the AVCHD to h264 and does an audio passthrough by default. It is fairly simple to modify it and add parameters to use other codec configurations like HEVC, opus, etc. I welcome any contribution. 
 
 

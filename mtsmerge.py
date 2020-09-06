@@ -85,6 +85,8 @@ def merge_mts_groups(groups, output_dir):
 
 def transcode_mts_groups(groups, output_dir, use_intermediate, encoder_args):
 
+	print("Transcoding mts")
+
 	# build concat command if we are not using intermediate file
 	if use_intermediate is False:
 		groups_input_args = build_input_args(groups)
@@ -115,7 +117,7 @@ def transcode_mts_groups(groups, output_dir, use_intermediate, encoder_args):
 		run_command(cmd)
 
 parser = argparse.ArgumentParser(description="mtsmerge merge & transcode .mts, .mts1, .mts2, .mts3 file sequence into an mp4 or mkv")
-parser.add_argument("--sourcedir", type=str, default=".", dest="source_dir", help="directory where your media files are found")
+parser.add_argument("--inputdir", type=str, default=".", dest="input_dir", help="directory where your media files are found")
 parser.add_argument("--outputdir", type=str, default=None, dest="output_dir", help="directory where your media files are outputted")
 parser.add_argument("--x265", default=False, action="store_true", help="transcode video in x265")
 parser.add_argument("--opus", default=False, action="store_true", help="transcode audio in opus")
@@ -134,7 +136,7 @@ if args.opus is True:
 if args.output_dir is not None:
 	os.makedirs(args.output_dir, exist_ok=True)
 
-groups = fetch_mts_groups(args.source_dir)
+groups = fetch_mts_groups(args.input_dir)
 
 if args.use_intermediate is True:
 	merge_mts_groups(groups, args.output_dir)
