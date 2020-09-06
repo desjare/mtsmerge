@@ -98,7 +98,8 @@ def transcode_mts_groups(groups, output_dir, use_intermediate, encoder_args):
 			group_merge_suffix = ""
 
 		if use_intermediate is True:
-			input_args = group + group_merge_suffix + ".mts"
+			group_input = os.path.join(output_dir, os.path.basename(group))
+			input_args = " -i " + group_input + group_merge_suffix + ".mts"
 		else:
 			input_args = groups_input_args[group]
 
