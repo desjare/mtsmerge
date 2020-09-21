@@ -127,10 +127,11 @@ parser.add_argument("--opus", default=False, action="store_true", help="transcod
 parser.add_argument("--useintermediate", default=False, action="store_true", dest="use_intermediate", help="use an intermediate mts file")
 args = parser.parse_args()
 
-encoder_args = ""
+encoder_args = " -map 0 "
 
 if args.x265 is True:
 	encoder_args += ' -c:v libx265 -crf 28 ' 
+	output_ext = ".mkv"
 
 if args.opus is True:
 	encoder_args += ' -c:a libopus -b:a 256K -af "channelmap=channel_layout=5.1" '
