@@ -15,12 +15,12 @@ def run_command(cmd):
 	if(status != 0):
 		print("Error: running command: %s" % (cmd, ))
 		print("Error: return status: %d" % (status))
-		print("Exiting...")
-		sys.exit(1)
+		return False
+	return True
 
 def fetch_mts_groups(path):
 	groups = {}
-	for root, dirs, files in os.walk(path, topdown=False):
+	for root, _, files in os.walk(path, topdown=False):
 		for name in files:
 			fullpath = os.path.join(root,name)
 			filename, ext = os.path.splitext(fullpath)
@@ -122,8 +122,8 @@ def transcode_mts_groups(groups, output_dir, use_intermediate, encoder_args):
 parser = argparse.ArgumentParser(description="mtsmerge merge & transcode .mts, .mts1, .mts2, .mts3 file sequence into an mp4 or mkv")
 parser.add_argument("--inputdir", type=str, default=".", dest="input_dir", help="directory where your media files are found")
 parser.add_argument("--outputdir", type=str, default=None, dest="output_dir", help="directory where your media files are outputted")
-parser.add_argument("--x265", default=False, action="store_true", help="transcode video in x265")
-parser.add_argument("--opus", default=False, action="store_true", help="transcode audio in opus")
+parser.add_argument("--x265", default=False, action="store_true", help="transcode video in x265 in a mkv container")
+parser.add_argument("--opus", default=False, action="store_true", help="transcode audio in opus in a mkv container")
 parser.add_argument("--useintermediate", default=False, action="store_true", dest="use_intermediate", help="use an intermediate mts file")
 args = parser.parse_args()
 
