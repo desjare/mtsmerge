@@ -152,7 +152,8 @@ def transcode_mts_groups(groups, output_dir, use_intermediate, encoder_args):
 parser = argparse.ArgumentParser(description="mtsmerge merge & transcode .mts, .mts1, .mts2, .mts3 file sequence into an mp4 or mkv")
 parser.add_argument("--inputdir", type=str, default=".", dest="input_dir", help="directory where your media files are found")
 parser.add_argument("--outputdir", type=str, default=None, dest="output_dir", help="directory where your media files are outputted")
-parser.add_argument("--default_map", default=False, dest="default_map", action="store_false", help="map all streams by default")
+parser.add_argument("--default-map", default=True, dest="default_map", action="store_false", help="map all streams by default")
+parser.add_argument("--audio-track", type=int, default=None, dest="audio_track", help="which audio track to transcode (1 or 2, or 3)")
 parser.add_argument("--x265", default=False, action="store_true", help="transcode video in x265 in a mkv container")
 parser.add_argument("--opus", default=False, action="store_true", help="transcode audio in opus in a mkv container")
 parser.add_argument("--useintermediate", default=False, action="store_true", dest="use_intermediate", help="use an intermediate mts file")
@@ -160,7 +161,9 @@ args = parser.parse_args()
 
 encoder_args = ""
 
-if args.default_map is True:
+if args.audio_track is not None:
+	encoder_args += " -map 0:0 -map 0:%d " % (args.audio_track)
+elif args.default_map is True:
 	encoder_args += " -map 0 "
 
 if args.x265 is True:
